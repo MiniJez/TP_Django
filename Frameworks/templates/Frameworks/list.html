@@ -1,0 +1,7 @@
+{% extends 'Frameworks/base.html' %}
+
+{% block body %}
+    {% for framework in frameworks %}
+        <h1>{{framework.name}} {{framework.language}} {{framework.using_percentage}}%</h1>
+    {% endfor %}
+{% endblock %}
