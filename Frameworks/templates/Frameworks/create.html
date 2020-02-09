@@ -4,4 +4,12 @@
 {% block body %}
 <h1 style="margin: 50px 0px;">Ajouter un framework</h1>
 
+<div style="width: 100%;">
+    <form action="/create/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="OK">
+    </form>
+</div>
+
 {% endblock %}
