@@ -1,7 +1,26 @@
 {% extends 'Frameworks/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block body %}
-    {% for framework in frameworks %}
-        <h1>{{framework.name}} {{framework.language}} {{framework.using_percentage}}%</h1>
-    {% endfor %}
+<h1 style="margin: 50px 0px;">Home</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Frameworks</th>
+            <th scope="col">Language</th>
+            <th scope="col">Popularity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for framework in frameworks %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{framework.name}}</td>
+                <td>{{framework.language}}</td>
+                <td>{{framework.using_percentage}}%</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
