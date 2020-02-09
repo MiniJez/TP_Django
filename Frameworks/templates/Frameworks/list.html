@@ -10,16 +10,31 @@
             <th scope="col">Frameworks</th>
             <th scope="col">Language</th>
             <th scope="col">Popularity</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for framework in frameworks %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{framework.name}}</td>
-                <td>{{framework.language}}</td>
-                <td>{{framework.using_percentage}}%</td>
-            </tr>
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{framework.name}}</td>
+            <td>{{framework.language}}</td>
+            <td>{{framework.using_percentage}}%</td>
+            <td class="row">
+                <div class="col" style="flex-grow: 0;">
+                    <form action="{% url 'delete' pk=framework.id %}" method="POST">
+                        {% csrf_token %}
+                        <input class="btn btn-default btn-danger" type="submit" value="Delete" />
+                    </form>
+                </div>
+                <div class="col" style="flex-grow: 0;">
+                    <form action="{% url 'update' pk=framework.id %}" method="GET">
+                        {% csrf_token %}
+                        <input class="btn btn-default btn-warning" type="submit" value="Modifier" />
+                    </form>
+                </div>
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
